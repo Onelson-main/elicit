@@ -4,10 +4,10 @@
     "slug": "Elicit",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/favicon.ico",
+    "icon": "./assets/android-chrome-512x512.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Elicit_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/favicon.ico",
+        "foregroundImage": "./assets/android-chrome-512x512.ico",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.ico",
+      "favicon": "./assets/Elicit.png",
       "bundler": "metro"
     },
     "plugins": [

@@ -32,8 +32,8 @@ export default function App() {
         headerLeft: () => (<Logo />),
         headerRight: () => (<Profile />)
       })}>
-        <Tab.Screen name="Elicit - Home" component={HomeScreen} options={{ tabBarIcon: (options) => getIcon("Home", options) }} />
-        <Tab.Screen name="Elicit - Collection" component={Collection} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarIcon: (options) => getIcon("Home", options) }} />
+        <Tab.Screen name="Collection" component={Collection} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -44,10 +44,10 @@ export default function App() {
 const getIcon = (name, { focused, color, size }) => {
   let iconName = "";
   switch (name) {
-    case "Elicit - Home":
+    case "Home":
       iconName = "search"
       break;
-    case "Elicit - Collection":
+    case "Collection":
       iconName = "bookmarks"
       break;
 
