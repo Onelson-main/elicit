@@ -2,16 +2,21 @@ import "@expo/metro-runtime";
 import "./global.css"
 import HomeScreen from "./src/screens/Home";
 import Collection from "./src/screens/Collection";
+import ProfileScreen from "./src/screens/Profile";
 
 import { NavigationContainer } from '@react-navigation/native';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import { colours } from "./src/core/style";
-import { Image, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import Text, { MinText } from "./src/components/Text";
 
+import { navigationRef, navigate } from './src/core/rootNavigation';
 
+const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 export default function App() {
@@ -21,24 +26,34 @@ export default function App() {
   });
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={({ route }) => ({
-        tabBarIcon: (iconOptions) => (
-          getIcon(route.name, iconOptions)
-        ),
-        tabBarActiveTintColor: colours.PRIMARY,
-        tabBarInactiveTintColor: colours.NEUTRAL_2,
-        headerTitle: () => (null),
-        headerLeft: () => (<Logo />),
-        headerRight: () => (<Profile />)
-      })}>
-        <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarIcon: (options) => getIcon("Home", options) }} />
-        <Tab.Screen name="Collection" component={Collection} />
-      </Tab.Navigator>
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{
+          headerTitle: () => (null),
+          headerLeft: () => (<Logo />),
+          headerRight: () => (<Profile />)
+        }} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
+const Home = () => (
+  <Tab.Navigator screenOptions={({ route }) => ({
+    tabBarIcon: (iconOptions) => (
+      getIcon(route.name, iconOptions)
+    ),
+    tabBarActiveTintColor: colours.PRIMARY,
+    tabBarInactiveTintColor: colours.NEUTRAL_2,
+    headerTitle: () => (null),
+    headerLeft: () => (<Logo />),
+    headerRight: () => (<Profile />)
+  })}>
+    <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarIcon: (options) => getIcon("Home", options) }} />
+    <Tab.Screen name="Collection" component={Collection} />
+  </Tab.Navigator>
+)
 
 
 const getIcon = (name, { focused, color, size }) => {
@@ -66,8 +81,8 @@ const Logo = () => (
 )
 
 const Profile = () => (
-  <View className="flex flex-column items-center mr-5">
-    <Ionicons name={'person'} size={24} color={colours.PRIMARY}/>
+  <TouchableOpacity className="flex flex-column items-center mr-5" onPress={() => navigate("Profile")}>
+    <Ionicons name={'person'} size={24} color={colours.PRIMARY} />
     <MinText bold>Jungwon</MinText>
-  </View>
+  </TouchableOpacity>
 )
