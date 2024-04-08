@@ -11,7 +11,7 @@ interface button_props {
 export default function Button(props: button_props & ButtonProps) {
     let { title, iconName, secondary } = props
     return (
-        <TouchableOpacity {...props} className={`p-4 px-8 m-2 rounded-xl flex-row items-center ${secondary ? 'bg-BACKGROUND border-[1px] border-NEUTRAL_2' : 'bg-PRIMARY'} active:bg-NEUTRAL`}>
+        <TouchableOpacity {...props} className={`p-4 px-8 m-2 rounded-xl flex-row items-center justify-center min-w-[200px] ${secondary ? 'bg-BACKGROUND border-[1px] border-NEUTRAL_2' : 'bg-PRIMARY'} active:bg-NEUTRAL`}>
             <Text style={{ fontWeight: "bold", color: secondary ?colours.PRIMARY:colours.BACKGROUND }}>{title}</Text>
             <Ionicons name={iconName} size={18} color={secondary ?colours.PRIMARY:colours.BACKGROUND}
                 className='ml-2' />

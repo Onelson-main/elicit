@@ -28,7 +28,7 @@ export default function Profile() {
                     </Text>
                 </View>
                 <RNText className=" text-center text-xl font-medium">4,820 credits remaining</RNText>
-                <View className="w-[150px] mx-auto">
+                <View className="mx-auto">
                     <Button title="Get More" />
                 </View>
             </View>
@@ -49,7 +49,6 @@ export default function Profile() {
                     <TouchableOpacity className="border-NEUTRAL border-[1px] p-2 px-4 rounded-md">Connect</TouchableOpacity>
                 </View>
             </View>
-
         </ScrollView>
     )
 }
